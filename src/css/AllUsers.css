@@ -81,6 +81,14 @@
   margin: 6px 0 16px;
   color: #0891b2;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-card__icon {
+  font-size: 1.1rem;
+  color: #0891b2;
 }
 
 .user-card__info {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { FaUser } from 'react-icons/fa'
 import '../css/AllUsers.css'
 
 const AllUsers = () => {
@@ -52,7 +53,10 @@ const AllUsers = () => {
         {users.map((user) => (
           <article className="user-card" key={user.id}>
             <h2 className="user-card__name">{user.name}</h2>
-            <p className="user-card__username">@{user.username}</p>
+            <p className="user-card__username">
+              <FaUser className="user-card__icon" />
+              @{user.username}
+            </p>
 
             <div className="user-card__info">
               <p>
