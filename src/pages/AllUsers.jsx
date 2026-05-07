@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { FaUser } from 'react-icons/fa'
+import { FaUser, FaEnvelope, FaPhone, FaGlobe, FaBuilding, FaMapPin } from 'react-icons/fa'
 import '../css/AllUsers.css'
 
 const AllUsers = () => {
@@ -60,19 +60,19 @@ const AllUsers = () => {
 
             <div className="user-card__info">
               <p>
-                <span>Email:</span> {user.email}
+                <span><FaEnvelope /></span> {user.email}
               </p>
               <p>
-                <span>Phone:</span> {user.phone}
+                <span><FaPhone /></span> {user.phone}
               </p>
               <p>
-                <span>Website:</span> {user.website}
+                <span><FaGlobe /></span> {user.website}
               </p>
               <p>
-                <span>Company:</span> {user.company?.name}
+                <span><FaBuilding /></span> {user.company?.name}
               </p>
               <p>
-                <span>Address:</span> {user.address?.city}, {user.address?.zipcode}
+                <span><FaMapPin /></span> {user.address?.city}, {user.address?.zipcode}
               </p>
             </div>
           </article>

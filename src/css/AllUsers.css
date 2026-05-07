@@ -3,125 +3,248 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .all-users-page {
   min-height: 100vh;
-  padding: 48px 20px 72px;
+  padding: 60px 20px 80px;
   background:
-    radial-gradient(circle at 15% 8%, rgba(16, 185, 129, 0.2), transparent 28%),
-    radial-gradient(circle at 85% 0%, rgba(14, 165, 233, 0.2), transparent 32%),
-    linear-gradient(180deg, #0f172a 0%, #111827 42%, #f1f5f9 42%, #f1f5f9 100%);
+    radial-gradient(circle at 20% 10%, rgba(59, 130, 246, 0.25), transparent 35%),
+    radial-gradient(circle at 80% 5%, rgba(34, 197, 94, 0.2), transparent 40%),
+    linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #0f172a 60%, #334155 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.all-users-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 50%, rgba(59, 130, 246, 0.08), transparent 50%),
+    radial-gradient(circle at 75% 30%, rgba(34, 197, 94, 0.08), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .all-users-page--status {
   display: grid;
   place-items: center;
-  color: #e2e8f0;
-  font-size: 1.1rem;
+  color: #cbd5e1;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .all-users-page__hero {
   max-width: 1120px;
-  margin: 0 auto 28px;
-  color: #f8fafc;
+  margin: 0 auto 48px;
+  color: #f1f5f9;
+  position: relative;
+  z-index: 1;
 }
 
 .all-users-page__eyebrow {
-  margin: 0 0 10px;
-  color: #34d399;
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  margin: 0 0 12px;
+  color: #22c55e;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.all-users-page__eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
 }
 
 .all-users-page__hero h1 {
   margin: 0;
-  font-size: clamp(2.1rem, 4.8vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .all-users-page__subtitle {
-  max-width: 64ch;
-  margin: 14px 0 0;
-  color: rgba(248, 250, 252, 0.78);
-  line-height: 1.7;
+  max-width: 70ch;
+  margin: 18px 0 0;
+  color: rgba(226, 232, 240, 0.85);
+  line-height: 1.75;
+  font-size: 1.05rem;
 }
 
 .all-users-grid {
   max-width: 1120px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  position: relative;
+  z-index: 1;
 }
 
 .user-card {
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 22px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 24px;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 250, 252, 0.88) 100%);
+  box-shadow: 
+    0 25px 50px rgba(15, 23, 42, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #22c55e, #f59e0b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
 }
 
 .user-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.18);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 35px 70px rgba(15, 23, 42, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.user-card:hover::before {
+  transform: scaleX(1);
 }
 
 .user-card__name {
-  margin: 0;
+  margin: 0 0 8px;
   color: #0f172a;
-  font-size: 1.3rem;
-  line-height: 1.25;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .user-card__username {
-  margin: 6px 0 16px;
-  color: #0891b2;
-  font-weight: 600;
+  margin: 0 0 20px;
+  color: #3b82f6;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
 }
 
 .user-card__icon {
-  font-size: 1.1rem;
-  color: #0891b2;
+  font-size: 1.2rem;
+  color: #3b82f6;
+  flex-shrink: 0;
 }
 
 .user-card__info {
   display: grid;
-  gap: 10px;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .user-card__info p {
   margin: 0;
-  color: #1e293b;
-  line-height: 1.55;
+  color: #334155;
+  line-height: 1.65;
   word-break: break-word;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .user-card__info span {
   color: #0f172a;
-  font-weight: 700;
+  font-weight: 800;
+  min-width: 80px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+
+.user-card__info p span ~ * {
+  flex: 1;
 }
 
 .all-users-page__error {
-  border: 1px solid rgba(239, 68, 68, 0.28);
-  border-radius: 14px;
-  padding: 14px 18px;
-  color: #fecaca;
-  background: rgba(239, 68, 68, 0.12);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-radius: 18px;
+  padding: 18px 24px;
+  color: #fee2e2;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.08) 100%);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.1);
+}
+
+@media (max-width: 768px) {
+  .all-users-page {
+    padding: 48px 16px 64px;
+  }
+
+  .all-users-page__hero {
+    margin-bottom: 36px;
+  }
+
+  .all-users-grid {
+    gap: 20px;
+  }
+
+  .user-card {
+    padding: 24px;
+  }
 }
 
 @media (max-width: 640px) {
   .all-users-page {
-    padding-inline: 16px;
+    padding: 36px 14px 52px;
+  }
+
+  .all-users-page__hero h1 {
+    font-size: 2.25rem;
   }
 
   .all-users-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .user-card {
+    padding: 20px;
+  }
+
+  .user-card__name {
+    font-size: 1.3rem;
+  }
+
+  .user-card__info span {
+    min-width: 70px;
   }
 }
